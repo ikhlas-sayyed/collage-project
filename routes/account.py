@@ -1,7 +1,7 @@
 import os
 from flask import Blueprint ,request, jsonify
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from DB import Student
+from DB import Student,User
 
 account = Blueprint('account', __name__)
 
@@ -18,3 +18,11 @@ def add_student():
             return jsonify({"success":False,"message":"Incompolete Data"})
     else:
         return jsonify({"success":False,"message":"data is Undefinde"})
+
+account.route('/login')
+def login():
+    data=request.json
+    if("user_id" in data and "password" in data):
+        user=User.objects(user_id=data[user_id],password=data['password'])
+        if(user):
+            pass

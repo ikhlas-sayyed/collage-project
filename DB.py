@@ -13,3 +13,8 @@ class Student(Document):
     en_no:IntField(unique=True)
     created_at = DateTimeField(default=datetime.datetime.now)
 
+class User(Document):
+    user_id=StringField(required=True,unique=True)
+    name= StringField(required=True)
+    number=IntField(required=True)
+    password=StringField(required=True)
