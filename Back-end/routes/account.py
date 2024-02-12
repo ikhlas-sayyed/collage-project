@@ -25,4 +25,8 @@ def login():
     if("user_id" in data and "password" in data):
         user=User.objects(user_id=data[user_id],password=data['password'])
         if(user):
-            pass
+            return jsonify({"success":True,"message":"Login successfully"})
+        else:
+            return jsonify({"success":False,"message":"User Not Found"})
+    else:
+        return jsonify({"success":False,"message":"Invail Data"})
