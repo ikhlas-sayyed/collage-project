@@ -18,3 +18,13 @@ class User(Document):
     name= StringField(required=True)
     number=IntField(required=True)
     password=StringField(required=True)
+
+class Attendance(Document):
+    subject=StringField(required=True)
+    div=StringField(required=True)
+    present=[
+        IntField(required=True)
+    ]
+    absent=[
+        IntField(required=True)
+    ]

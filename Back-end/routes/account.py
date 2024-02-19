@@ -30,3 +30,13 @@ def login():
             return jsonify({"success":False,"message":"User Not Found"})
     else:
         return jsonify({"success":False,"message":"Invail Data"})
+
+account.route("/add_user")
+def add_user():
+    data=request.json
+    conditions=("user_id" in data and "name" in data and "number" in data and "password" in data)
+    if(conditions):
+        user=User(user_id=data["user_id"],name=data["name"],number=data["number"],password=data["password"])
+        user.save()
+    else:
+        return jsonify({"success":False,"message":"Invail Data"})
